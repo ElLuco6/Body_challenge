@@ -19,7 +19,7 @@
         <div class="col-12 col-md-4">
             <img src="https://ad962edbae8ba7b03b7f-d10007df79b5b7a4e475a291e50a08cf.ssl.cf3.rackcdn.com/bp-coach-sportif/business-plan-coach-sportif.jpg"
                 alt="coach" class="img-fluid rounded-circle">
-            <p>{{ coaches.lastName }}, {{ coaches.age }} ans</p>
+            <p>{{ coaches.firstName }}, {{ coaches.age }} ans</p>
             <p><span class="fs-3">📍</span> {{ coaches.city }}</p>
             {# le length permet d'additioner le nombres d'avis sur le coach #}
             <p><a href="#avis">{{ coaches.comments | length }} avis</a></p>
@@ -38,13 +38,7 @@
     </div>
 </section>
 <section class="container text-center text-white pb-5 mt-5 rounded dark_view_coach">
-    <div class="description">
-        <h1 class="pt-5 mb-4">Votre coach vous parle</h1>
-        <p class="lh-lg px-5">{{ coaches.description | nl2br }}</p>
-    </div>
-</section>
-<section class="container text-center text-white pb-5 mt-5 rounded dark_view_coach">
-    <div class="description">
+    <div class="description bg-dark">
         <h1 class="pt-5 mb-4">Votre coach vous parle</h1>
         <p class="lh-lg px-5">{{ coaches.description | nl2br }}</p>
     </div>
@@ -61,7 +55,7 @@
     {% endfor %}
 </section>
 
-    <div class="container pb-3">
+    <div class="container pb-3 bg-dark">
         {{ form_start(commentForm) }}
         {{ form_row(commentForm.title, {'attr': {'placeholder': "Votre titre"}})}}
         {{ form_row(commentForm.author, {'attr': {'placeholder': "Votre nom"}})}}
