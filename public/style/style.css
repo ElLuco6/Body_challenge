@@ -1,0 +1,115 @@
+body {
+    background-color: #ffffff;
+}
+
+.jaune {
+    color: #EDB518;
+}
+
+.rouge {
+    color: #790311;
+}
+
+.blanc {
+    color: #F5F7F7;
+}
+
+.noir {
+    color: #000417;
+}
+
+.carousel-item {
+    height: 90vh;
+
+}
+
+.carousel-img {
+    min-height: 80vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+}
+
+footer {
+    background-color: #f4f4f4;
+    ;
+    color: #F5F7F7;
+    text-align: center;
+}
+
+#ligne {
+    margin-top: 2vh;
+    height: 1px;
+    background-color: #e3e3e3;
+}
+
+footer ul {
+    padding: 0;
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+}
+
+#reseaux i {
+    color: #F5F7F7;
+    font-size: 2rem;
+    padding: 10px;
+}
+
+#bulle {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+#bulle p {
+    font-weight: bold;
+    border-radius: 10%;
+    border: 5px solid #790311;
+    margin: 4%;
+    padding: 100px;
+    font-size: 1.5rem;
+}
+
+.bulle1 {
+    color: #F5F7F7;
+    background-color: #000417;
+}
+
+#copyright {
+    color: #F5F7F7;
+    background-color: #000417;
+    margin-bottom: 0px;
+}
+
+/* --------------------------------------------------------- */
+/* VIEW COACH */
+h1.red_view_coach {
+    background-color: #790311;
+}
+
+section.dark_view_coach {
+    background-color: #000417!important;
+}
+@media (min-width: 600px) {
+    #bulle {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #bulle p {
+
+        padding: 25%;
+    }
+}
+
+
+@media (min-width: 1250px) {
+    #bulle {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    #bulle p {
+
+        padding: 20%;
+    }
+}
