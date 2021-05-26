@@ -43,4 +43,32 @@
         <p class="lh-lg px-5">{{ coaches.description | nl2br }}</p>
     </div>
 </section>
+<section class="container text-center text-white pb-5 mt-5 rounded dark_view_coach">
+    <div class="description">
+        <h1 class="pt-5 mb-4">Votre coach vous parle</h1>
+        <p class="lh-lg px-5">{{ coaches.description | nl2br }}</p>
+    </div>
+</section>
+
+<section class="container commentaire mt-5" id="avis">
+    <h1>Commentaires :</h1>
+    {% for comment in coaches.comments %}
+    <hr>
+    <h1 class="fs-3">{{ comment.author }}</h1>
+    <h2 class="fs-3">{{ comment.title }}</h2>
+    <p><em>Publié le {{ comment.publishedAt | date('d/m/Y à H:i') }}</em></p>
+    <p>{{ comment.content }}</p>
+    {% endfor %}
+</section>
+
+    <div class="container pb-3">
+        {{ form_start(commentForm) }}
+        {{ form_row(commentForm.title, {'attr': {'placeholder': "Votre titre"}})}}
+        {{ form_row(commentForm.author, {'attr': {'placeholder': "Votre nom"}})}}
+        {{ form_row(commentForm.content, {'attr': {'placeholder': "Votre contenu"}})}}
+
+        <button type="submit" class="btn btn-outline-light text-white bg-dark mt-3">Commenter</button>
+
+        {{ form_end(commentForm) }}
+    </div>
 {% endblock %}
