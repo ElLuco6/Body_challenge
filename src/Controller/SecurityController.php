@@ -41,16 +41,15 @@ class SecurityController extends AbstractController
            'form' => $form->createView()
        ]);
     }
- /**
-     * @Route("/login", name="app_connexion")
+
+    /**
+     * @Route("/login", name="app_login")
      */
 
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
          if ($this->getUser()) {
-             return $this->redirectToRoute('app_inscription');
-         }else{
-             echo 'marche pas';
+             return $this->redirectToRoute('app_home');
          }
 
         // get the login error if there is one

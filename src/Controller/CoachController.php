@@ -18,7 +18,12 @@ class CoachController extends AbstractController
      * @Route("/", name="app_home")
      */
     public function home() {
-        return $this->render('coach/accueil.html.twig');
+
+        $coaches = $this->getDoctrine()->getRepository(User::class)->findRandomCoach(5);
+        
+        return $this->render('coach/accueil.html.twig', [
+            'coaches'=> $coaches,
+        ]);
     }
     /**
      * @Route("/coach", name="app_coach")
@@ -38,7 +43,7 @@ class CoachController extends AbstractController
         $coaches = $details->find($id);
 
         $comment = new Comment();
-        $form = $this->createForm(CommentType::Class, $comment);
+        $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
         if(
             $form->isSubmitted() && $form->isValid()){

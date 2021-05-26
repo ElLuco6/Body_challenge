@@ -36,22 +36,27 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->flush();
     }
 
-    // /**
-    //  * @return User[] Returns an array of User objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
+    /**
+    * @return User[] Returns an array of User objects
     */
+    public function findRandomCoach(int $limit = 5)
+    {   
+        //Lister de manieres aléatoire 5 coaches sur la page d'acceuil avec la function RAND() avec une requête SQL classique
+        // On se connecte
+        $sth = $this->getEntityManager()->getConnection();
+        // On fait notre requête
+        $sql = 'SELECT * FROM `user` WHERE roles LIKE :role ORDER BY RAND() LIMIT :limit';
+        // On la prépare
+        $stmt = $sth->prepare($sql);
+        // On associe nos valeurs aux parametres de la requetes
+        $stmt->bindValue(':role', '%ROLE_COACH%');
+        // On spécifie avec le \PDO::PARAM_INT les valeurs de sortie en INT
+        $stmt->bindValue(':limit', $limit, \PDO::PARAM_INT);
+        // On exécute notre requ$ete
+        $stmt->execute();
+        // On retourne tous les résultats
+        return $stmt->fetchAll();
+    }
 
     /*
     public function findOneBySomeField($value): ?User
