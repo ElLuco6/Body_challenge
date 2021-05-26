@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CommentController!{% endblock %}
+
+{% block body %}
+{% for message in app.flashes('success') %}
+    <div class="alert-success text-center mt-3">
+        {{ message }}
+    </div>
+{% endfor %}
+
+<section class="container mt-5 text-center">
+    <div>
+        <h1 class="fs-6 p-3 mb-5 text-dark rounded-top rounded-bottom red_view_coach">Nos cours sont disponibles durant le
+            confinement ❤️ ! C'est le moment de se remettre en forme 💪 et de stimuler son immunité 🍎🍋🥝 pour détruire
+            le COVID-19 🔥</h1>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-4">
+            <img src="https://ad962edbae8ba7b03b7f-d10007df79b5b7a4e475a291e50a08cf.ssl.cf3.rackcdn.com/bp-coach-sportif/business-plan-coach-sportif.jpg"
+                alt="coach" class="img-fluid rounded-circle">
+            <p>{{ coaches.lastName }}, {{ coaches.age }} ans</p>
+            <p><span class="fs-3">📍</span> {{ coaches.city }}</p>
+            {# le length permet d'additioner le nombres d'avis sur le coach #}
+            <p><a href="#avis">{{ coaches.comments | length }} avis</a></p>
+            <a href="#" type="submit" class="btn btn-outline-light text-white bg-dark">Réserver</a>
+        </div>
+        <div class="col-12 col-md-4">
+            <p class="fs-1 m-0"><i class="las la-graduation-cap la-1x"></i></p>
+            <h1>Formation</h1>
+            <p>{{ coaches.education | nl2br }}</p>
+        </div>
+        <div class="col-12 col-md-4">
+            <p class="fs-1 m-0"><i class="las la-check-circle la-lg"></i></p>
+            <h1>Expérience</h1>
+            <p>{{ coaches.experience | nl2br }}</p>
+        </div>
+    </div>
+</section>
+<section class="container text-center text-white pb-5 mt-5 rounded dark_view_coach">
+    <div class="description">
+        <h1 class="pt-5 mb-4">Votre coach vous parle</h1>
+        <p class="lh-lg px-5">{{ coaches.description | nl2br }}</p>
+    </div>
+</section>
+{% endblock %}
