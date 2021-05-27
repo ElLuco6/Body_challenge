@@ -28,33 +28,30 @@
   </button>
 </div>
 
-<section class="container">
-  <article class="row row-cols-3">
-    {% for coach in coaches %}
+
+<section class="container-fluid">
+  <div class="row">
+    <div class="col-md-8 d-flex">
+      {% for coach in coaches %}
     <div class="col">
       <div class="card text-center" style="width: 18rem;">
-        <img src="{{ asset('/uploads/photos_coachs/' ~ coach.picture) }}" alt="Image">
+        <img src="{{ asset('/uploads/photos_coachs/' ~ coach.picture) }}" alt="Image" class="rounded-circle img-acceuil">
         <div class="card-body">
           <h5 class="card-title">{{ coach.first_name }}, {{ coach.age }} ans</h5>
-          <p class="card-text">{{ coach.city }}</p>
-          <p class="card-text">{{ coach.sport }}</p>
-          <p class="card-text">{{ coach.tarif }} €</p>
+          <p class="card-text"><i class="las la-map-marker la-2x"></i>{{ coach.city }}</p>
+          <p class="card-text"><i class="las la-running la-2x"></i>{{ coach.sport }}</p>
+          <p class="card-text">{{ coach.tarif }} €/l'heure</p>
           <a href="{{ path('app_view', {id: coach.id})}}" class="btn btn-dark">Voir le coach</a>
         </div>
       </div>
     </div>
     {% endfor %}
-  </article>
-
-  <article class="container">
-    <div class="row">
-      <div class="col-6" id="maCarte"> </div>
-      <p class="col-6">loquentiam quot intellegam intellegam tamen pluribus locis philosophi dicit igitur eloquentiam
-        tamen inquam quidem sententiae sed nam quod re vult et asperner afferat nam quot istius possumus fallare locis
-        me.</p>
     </div>
-
-  </article>
+    <!-- Ici une col-->
+    <div class="col-md-4">
+      <div class="col-6 macarte" id="maCarte"> </div>
+    </div>
+  </div>
 </section>
 
 

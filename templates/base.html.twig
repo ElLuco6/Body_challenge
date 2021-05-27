@@ -9,7 +9,9 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
         <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
     <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('fonts') }}">
     <link rel="stylesheet" href="{{ asset('style/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('style/line-awesome.css') }}">
     {% block stylesheets %}{% endblock %}    
 </head>
 
@@ -38,8 +40,8 @@
                     </li>
                     {% else %}
                      <li class="nav-item">
-                        <a href="{{ path('app_update', {})}}" class="btn btn-primary m-auto rounded-pill">Modifier profil</a>
-                        <a href="{{ path('app_logout', {})}}" class="btn btn-primary m-auto rounded-pill">Déconnexion</a>
+                        <a href="{{ path('app_update', {})}}" class="btn btn-primary m-auto rounded-pill bg-light text-dark">Modifier profil</a>
+                        <a href="{{ path('app_logout', {})}}" class="btn btn-primary m-auto rounded-pill bg-light text-dark">Déconnexion</a>
                      </li>
                      
                     {% endif %}

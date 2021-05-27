@@ -18,9 +18,13 @@ body {
     color: #000417;
 }
 #maCarte{
-    height: 400px;
-   
+    height: 525px;
 }
+
+div.macarte {
+    width: 100%;
+}
+
 .carousel-item {
     height: 90vh;
 
@@ -94,6 +98,8 @@ h1.red_view_coach {
 section.dark_view_coach {
     background-color: #000417!important;
 }
+
+
 @media (min-width: 600px) {
     #bulle {
         grid-template-columns: 1fr 1fr;

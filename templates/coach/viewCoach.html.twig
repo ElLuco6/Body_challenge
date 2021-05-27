@@ -17,9 +17,9 @@
     </div>
     <div class="row">
         <div class="col-12 col-md-4">
-            <img src="{{ asset('/uploads/photos_coachs/' ~ coaches.picture) }}" alt="Image">
+            <img src="{{ asset('/uploads/photos_coachs/' ~ coaches.picture) }}" alt="Image" class=" rounded-circle">
             <p>{{ coaches.firstName }}, {{ coaches.age }} ans</p>
-            <p><span class="fs-3">📍</span> {{ coaches.city }}</p>
+            <p><i class="las la-map-marker la-2x"></i> {{ coaches.city }}</p>
             {# le length permet d'additioner le nombres d'avis sur le coach #}
             <p><a href="#avis">{{ coaches.comments | length }} avis</a></p>
             <a href="#" type="submit" class="btn btn-outline-light text-white bg-dark">Réserver</a>
@@ -36,10 +36,10 @@
         </div>
     </div>
 </section>
-<section class="container text-center text-white pb-5 mt-5 rounded dark_view_coach">
+<section class="container text-center text-white pb-5 mt-5 rounded">
     <div class="description bg-dark">
         <h1 class="pt-5 mb-4">Votre coach vous parle</h1>
-        <p class="lh-lg px-5">{{ coaches.description | nl2br }}</p>
+        <p class="lh-lg px-5 pb-5">{{ coaches.description | nl2br }}</p>
     </div>
 </section>
 
