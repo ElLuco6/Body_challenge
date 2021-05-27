@@ -6,9 +6,12 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+
 
 class RegistrationType extends AbstractType
 {
@@ -36,6 +39,22 @@ class RegistrationType extends AbstractType
             ->add('experience')
             ->add('education')
             ->add('tarif')
+            ->add('picture', FileType::class, [
+                'mapped'     => false, // Evite qu'il vérifie que ça existe en base
+                'constraints' => [
+                    new File([
+                        'maxSize'   => '1024k',
+                        'mimeTypes' => [
+                            'image/jpg',
+                            'image/jpeg',
+                            'image/png',
+                            'image/gif'
+                        ],
+                        'mimeTypesMessage' => 'Format d\'image non valide (png, jpg ou gif)',
+                    ])
+                ],
+                'required' => false,
+            ])
         ;
 
         // Data transformer

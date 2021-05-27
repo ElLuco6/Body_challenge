@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -17,7 +18,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/inscription", name="app_inscription")
      */
-    public function Registration(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder): Response
+    public function Registration(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder, SluggerInterface $slugger): Response
     {
         $user = new User();
 
@@ -28,6 +29,31 @@ class SecurityController extends AbstractController
 
         // Vérification du formulaire
         if($form->isSubmitted() && $form->isValid()) {
+
+            $pictureFile = $form->get('picture')->getData();
+            // Je vérifie que l'image soit bien uploadé
+            if ($pictureFile) {
+                // Je récupère le nom original de l'image
+                $originalFilename = pathinfo($pictureFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // Je nettoie le nom du fichier original, je le slugify pour éviter les caractères accentués , espaces et autres caractères spéciaux
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$pictureFile->guessExtension();
+
+                // Je sauvegarde mon fichier
+                try {
+                    $pictureFile->move(
+                        $this->getParameter('photo_profil_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    //En cas de gros problème (exemple le répertoire d'image n'existe pas)
+                }
+
+                // Ligne a modifier
+                $user->setPicture($newFilename);
+            }
+
+
             $hash = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($hash);
             $user->setCreatedAt(new \DateTime());
