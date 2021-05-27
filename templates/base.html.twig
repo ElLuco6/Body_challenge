@@ -30,17 +30,20 @@
                     <li class="nav-item dropdown">
                         <a class="navbar-brand text-white" href="{{ path('app_coach') }}">Nos coaches</a>
                     </li>
+
+                    {% if not app.user %}
                     <li class="nav-item">
                          <a class="navbar-brand text-white" href="{{ path('app_login') }}">Connexion</a>
+                         <a class="navbar-brand text-white" href="{{ path('app_inscription') }}">Inscription</a>
                     </li>
+                    {% else %}
                      <li class="nav-item">
-                        <a class="navbar-brand text-white" href="{{ path('app_inscription') }}">Inscription</a>
+                        <a href="{{ path('app_update', {})}}" class="btn btn-primary m-auto rounded-pill">Modifier profil</a>
+                        <a href="{{ path('app_logout', {})}}" class="btn btn-primary m-auto rounded-pill">Déconnexion</a>
                      </li>
                      
+                    {% endif %}
                     
-                    <li class="nav-item">
-                        <a href="{{ path('app_update', {})}}" class="btn btn-primary m-auto rounded-pill">Modifier</a>
-                     </li>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">

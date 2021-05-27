@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CommentController!{% endblock %}
+{% block title %}Page détails{% endblock %}
 
 {% block body %}
 {% for message in app.flashes('success') %}
@@ -17,8 +17,7 @@
     </div>
     <div class="row">
         <div class="col-12 col-md-4">
-            <img src="https://ad962edbae8ba7b03b7f-d10007df79b5b7a4e475a291e50a08cf.ssl.cf3.rackcdn.com/bp-coach-sportif/business-plan-coach-sportif.jpg"
-                alt="coach" class="img-fluid rounded-circle">
+            <img src="{{ asset('/uploads/photos_coachs/' ~ coaches.picture) }}" alt="Image">
             <p>{{ coaches.firstName }}, {{ coaches.age }} ans</p>
             <p><span class="fs-3">📍</span> {{ coaches.city }}</p>
             {# le length permet d'additioner le nombres d'avis sur le coach #}

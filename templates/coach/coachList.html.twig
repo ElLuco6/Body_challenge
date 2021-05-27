@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CommentController!{% endblock %}
+{% block title %}Nos coaches{% endblock %}
 
 {% block body %}
 
@@ -13,7 +13,7 @@
         {% for coach in coaches %}
         <div class="col-md-4 col-sm-12">
             <div class="card text-center mt-5" style="width: 18rem;">
-                <img src="https://www.superprof.fr/images/annonces/professeur-home-coach-sportif-personnel-bruxelles-woluwe-fitnastic-alentours.jpg" class="card-img-top rounded-circle" alt="...">
+                <img src="{{ asset('/uploads/photos_coachs/' ~ coach.picture) }}" alt="Image">
                 <div class="card-body">
                   <h5 class="card-title">{{ coach.firstName }}, {{ coach.age }} ans </h5>
                   <p class="card-text">{{ coach.sport }}.</p>

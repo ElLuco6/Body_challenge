@@ -32,8 +32,8 @@
   <article class="row row-cols-3">
     {% for coach in coaches %}
     <div class="col">
-      <div class="card" style="width: 18rem;">
-        <p class="card-text">{{ coach.picture }}</p>
+      <div class="card text-center" style="width: 18rem;">
+        <img src="{{ asset('/uploads/photos_coachs/' ~ coach.picture) }}" alt="Image">
         <div class="card-body">
           <h5 class="card-title">{{ coach.first_name }}, {{ coach.age }} ans</h5>
           <p class="card-text">{{ coach.city }}</p>
@@ -43,30 +43,20 @@
         </div>
       </div>
     </div>
-  {% endfor %}
-  </article>
-  
-  {# ici #}
-
+    {% endfor %}
   </article>
 
   <article class="container">
     <div class="row">
       <div class="col-6" id="maCarte"> </div>
-    
-    
       <p class="col-6">loquentiam quot intellegam intellegam tamen pluribus locis philosophi dicit igitur eloquentiam
         tamen inquam quidem sententiae sed nam quod re vult et asperner afferat nam quot istius possumus fallare locis
         me.</p>
     </div>
-    
+
   </article>
 </section>
 
-
-{# {% for coach in coaches %}
-  {{ dump(coach) }}
-  {% endfor %} #}
 
 {% endblock %}
 
@@ -182,14 +172,15 @@
 
   var marqueurs = L.markerClusterGroup();
 
+  var marqueurs = L.markerClusterGroup();
+
   // On personnalise le marqueur
   var icone = L.icon({
-    iconUrl: "images/marqueur.png",
-    iconSize: [50, 50],
-    iconAnchor: [25, 50],
-    popupAnchor: [0, -50]
-  })
-
+      iconUrl: "images/marqueur.png",
+      iconSize: [50, 50],
+      iconAnchor: [25, 50],
+      popupAnchor: [0, -50]
+    }) 
   // On parcourt les différentes villes
   for (ville in villes) {
     // On crée le marqueur et on lui attribue une popup
@@ -204,6 +195,9 @@
   }
   // On regroupe les marqueurs dans un groupe Leaflet
   var groupe = new L.featureGroup(tableauMarqueurs);
+
+  // On adapte le zoom au groupe
+  carte.fitBounds(groupe.getBounds().pad(0.5));
 
   // On adapte le zoom au groupe
   carte.fitBounds(groupe.getBounds().pad(0.5));
