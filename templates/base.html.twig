@@ -52,37 +52,39 @@
             </div>
         </div>
     </nav>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
-    </script>
+   
     {% block body %}{% endblock %}
+
     <footer id="footer">
-        <div id="ligne">
-          </div>
-           <section>
-              <div id="bulle">
-              <p class="bulle1">Des coaches diplomés <i class="las la-graduation-cap"></i></p>
-               <p class="bulle1">Partout en france <i class="las la-compass"></i></p>
-                <p class="bulle1">97% client satisfait <i class="las la-thumbs-up"></i></p>
-                 <p class="bulle1">Des tarifs abordable <i class="las la-coins"></i></p>
-              </div>
+        <div id="ligne"></div>
+        <section>
+            <div id="bulle">
+            <p class="bulle1">Des coaches diplomés <i class="las la-graduation-cap"></i></p>
+            <p class="bulle1">Partout en france <i class="las la-compass"></i></p>
+            <p class="bulle1">97% client satisfait <i class="las la-thumbs-up"></i></p>
+                <p class="bulle1">Des tarifs abordable <i class="las la-coins"></i></p>
+            </div>
               
-              <section id="reseaux">
-                  
-                      <h1>Nos réseaux</h1>
-                      <ul>
-                          <li><a href="#"><i class="lab la-facebook-f"></i></a></li>
-                          <li><a href="#"><i class="lab la-google-plus"></i></a></li>
-                          <li><a href="#"><i class="lab la-twitter"></i></a></li>
-                          <li><a href="#"><i class="lab la-linkedin-in"></i></a></li>
-                          <li><a href="#"><i class="lab la-dribbble"></i></a></li>
-                      </ul>
-                  <p id="copyright">Copyright &copy; BODY CHALLENGE 2021</p>
-              </section>
+            <section id="reseaux">
+                
+                <h5 class="h1">Nos réseaux</h5>
+                <ul>
+                    <li><a href="#"><i class="lab la-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="lab la-google-plus"></i></a></li>
+                    <li><a href="#"><i class="lab la-twitter"></i></a></li>
+                    <li><a href="#"><i class="lab la-linkedin-in"></i></a></li>
+                    <li><a href="#"><i class="lab la-dribbble"></i></a></li>
+                </ul>
+                <p id="copyright">Copyright &copy; BODY CHALLENGE 2021</p>
+            </section>
           
-          </section>
-        </footer>
-    {% block footer %}{% endblock %}
+        </section>
+    </footer>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
     {% block javascripts %}{% endblock %}
 </body>
 </html>
