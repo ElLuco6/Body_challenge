@@ -13,9 +13,9 @@
     <link rel="stylesheet" href="{{ asset('style/style.css') }}">
     {#{{ encore_entry_link_tags('app') }}#}
     {% endblock %}
-
+    
     {% block javascripts %}
-    {#{{ encore_entry_script_tags('app') }}#}
+    <script src="{{ asset('js/script.js') }}"></script>
     {% endblock %}
 </head>
 
@@ -64,7 +64,7 @@
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
     </script>
     {% block body %}{% endblock %}
-    <footer>
+    <footer id="footer">
         <div id="ligne">
           </div>
            <section>

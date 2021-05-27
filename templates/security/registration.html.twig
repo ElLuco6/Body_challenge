@@ -21,6 +21,7 @@
 
     {{ form_row(form.roles) }}
 
+<div class="coach">
     {{ form_row(form.city, {'label': 'Ville','attr': {'placeholder': 'Entrez votre ville'}}) }}
 
     {{ form_row(form.sport, {'label': 'Spécialité','attr': {'placeholder': 'Entrez votre spécialité'}}) }}
@@ -32,7 +33,7 @@
     {{ form_row(form.experience, {'label': 'Expérience','attr': {'placeholder': 'Entrez votre expérience'}}) }}
 
     {{ form_row(form.tarif, {'label': 'Tarif','attr': {'placeholder': 'Entrez votre tarif'}}) }}
-
+</div>
     
 
     <button type="submit" class="btn btn-dark mt-2">S'enregistrer</button>
