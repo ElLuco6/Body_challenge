@@ -48,7 +48,7 @@ class CoachController extends AbstractController
         $form->handleRequest($request);
         if(
             $form->isSubmitted() && $form->isValid()){
-                $comment->setPublishedAt(new \DateTime('now'));
+                $comment->setPublishedAt(new \DateTime('now'))->setUser($coaches);
                 $manager->persist($comment);
                 $manager->flush();
                 $this->addFlash('success','Votre commentaire a bien été envoyé');
@@ -57,6 +57,7 @@ class CoachController extends AbstractController
                 ]);
             }
         
+            
         return $this->render('coach/viewcoach.html.twig', [
             'coaches'=> $coaches,
             'commentForm'=> $form->createView()
