@@ -2,18 +2,21 @@
 
 namespace App\Form;
 use App\Entity\User;
+use Doctrine\DBAL\Types\IntegerType;
 use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\Type;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class RegistrationType extends AbstractType
 {
@@ -44,60 +47,59 @@ class RegistrationType extends AbstractType
             ])
             
             ->add('password', PasswordType::class, [
-                'type' => [
-                    'password' => 'password', 
-                    
+                'constraints' => [
+                    new NotBlank(),
                 ],
                 'required' => true,
             ])
             ->add('confirm_password')
             // ->add('created_at')
             ->add('age', IntegerType::class, [
-                'type' => [
-                    'integer' => 'age', 
-                    
+                'constraints' => [
+                    new NotBlank(),
+                    new Length(['min' => 3]),
                 ],
                 'required' => true,
             ])
-            ->add('city', StringType::class, [
-                'type' => [
-                    'string' => 'city', 
-                    
+            ->add('city', TextType::class, [
+                'constraints' => [
+                    new NotBlank(),
+                    new Length(['min' => 3]),
                 ],
                 'required' => true,
             ])
-            ->add('description', TextType::class, [
-                'type' => [
-                    'text' => 'description', 
-                    
+            ->add('description', TextareaType::class, [
+                'constraints' => [
+                    new NotBlank(),
+                    new Length(['min' => 3]),
                 ],
                 'required' => true,
             ])
             ->add('sport', TextType::class, [
-                'type' => [
-                    'text' => 'sport', 
-                    
+                'constraints' => [
+                    new NotBlank(),
+                    new Length(['min' => 3]),
                 ],
                 'required' => true,
             ])
-            ->add('experience', TextType::class, [
-                'type' => [
-                    'text' => 'experience', 
-                    
+            ->add('experience', TextareaType::class, [
+                'constraints' => [
+                    new NotBlank(),
+                    new Length(['min' => 3]),
                 ],
                 'required' => true,
             ])
             ->add('education', TextType::class, [
-                'type' => [
-                    'text' => 'experience', 
-                    
+                'constraints' => [
+                    new NotBlank(),
+                    new Length(['min' => 3]),
                 ],
                 'required' => true,
             ])
             ->add('tarif', IntegerType::class, [
-                'type' => [
-                    'integer' => 'tarif', 
-                    
+                'constraints' => [
+                    new NotBlank(),
+                    new Length(['min' => 3]),
                 ],
                 'required' => true,
             ])
