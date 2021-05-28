@@ -1,0 +1,140 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification{% endblock %}
+
+{% block body %}
+
+<div class="row justify-content-center mt-5 mb-5">
+    <div class="col-6">
+    <h1 class="h2">Mise à jours des informations</h1>
+      <form method="post">
+
+      {% if errors.firstName is defined %}
+                <div class="btn btn-outline-danger">
+                    {{ errors.firstName }} 
+                </div>
+                {% endif %}
+        <div class="mb-3">
+            <label for="firstName" class="form-label">Nouveau Prénom</label>
+            <input type="text" name="firstName" class="form-control" id="firstName" placeholder="Entrez votre nouvel firstName" value="{{ update.firstName }}">
+        </div>
+
+        {% if errors.lastName is defined %}
+                <div class="btn btn-outline-danger">
+                    {{ errors.lastName }} 
+                </div>
+                {% endif %}
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Nouveau Nom</label>
+            <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Entrez votre nouvel lastName" value="{{ update.lastName }}">
+        </div>
+
+        {% if errors.email is defined %}
+                <div class="btn btn-outline-danger">
+                    {{ errors.email }} 
+                </div>
+                {% endif %}
+        <div class="mb-3">
+            <label for="email" class="form-label">Nouvel Email</label>
+            <input type="text" name="email" class="form-control" id="email" placeholder="Entrez votre nouvel email" value="{{ update.email }}">
+        </div>
+
+        {% if errors.age is defined %}
+                <div class="btn btn-outline-danger">
+                    {{ errors.age }} 
+                </div>
+                {% endif %}
+        <div class="mb-3">
+            <label for="age" class="form-label">Nouvel Age</label>
+            <input type="number" name="age" class="form-control" id="age" placeholder="Entrez votre nouvel age" value="{{ update.age }}">
+        </div>
+
+        {% if errors.password is defined %}
+                <div class="btn btn-outline-danger">
+                    {{ errors.password }} 
+                </div>
+                {% endif %}
+        <div class="mb-3">
+            <label for="password" class="form-label">Nouveau Mot de Passe</label>
+            <input type="password" name="password" class="form-control" id="password" placeholder="Entrez votre nouveau mot de passe" value="">
+            <p clas="text-muted small">Si vous ne souhaitez pas changer votre mot de passe, vous pouvez laisser ce champ vide</p>
+        </div>
+
+        {% if errors.city is defined %}
+                <div class="btn btn-outline-danger">
+                    {{ errors.city }} 
+                </div>
+                {% endif %}
+        <div class="mb-3">
+            <label for="city" class="form-label">Nouvelle localisation</label>
+            <input type="text" name="city" class="form-control" id="city" placeholder="Entrez votre ville" value="{{ update.city }}">
+        </div>
+
+        {% if errors.description is defined %}
+                <div class="btn btn-outline-danger">
+                    {{ errors.description }} 
+                </div>
+                {% endif %}
+        <div class="mb-3">
+                <label for="description" class="form-label">Nouvelle description</label>
+                <textarea name="description" class="form-control" id="description" rows="3" placeholder="Saisissez la nouvelle description de votre profil">{{ update.description }}</textarea>
+        </div>
+
+        {% if errors.experience is defined %}
+                <div class="btn btn-outline-danger">
+                    {{ errors.experience }} 
+                </div>
+                {% endif %}
+        <div class="mb-3">
+                <label for="experience" class="form-label">Nouvelle experience</label>
+                <textarea name="experience" class="form-control" id="experience" rows="3" placeholder="Saisissez la nouvelle experience de votre profil">{{ update.experience }}</textarea>
+        </div>
+
+        {% if errors.education is defined %}
+                <div class="btn btn-outline-danger">
+                    {{ errors.education }} 
+                </div>
+                {% endif %}
+        <div class="mb-3">
+            <label for="education" class="form-label">Nouvelle Formation</label>
+            <input type="text" name="education" class="form-control" id="education" placeholder="Entrez vos nouvelles formations" value="{{ update.education }}">
+        </div>
+
+        {% if errors.sport is defined %}
+                <div class="btn btn-outline-danger">
+                    {{ errors.sport }} 
+                </div>
+                {% endif %}
+        <div class="mb-3">
+            <label for="sport" class="form-label" >Nouvelle Spécialité</label>
+            <input type="text" name="sport" class="form-control" id="sport" placeholder="Entrez vos nouvelles spécialité" value="{{ update.sport }}">
+        </div>
+
+        {% if errors.tarif is defined %}
+                <div class="btn btn-outline-danger">
+                    {{ errors.tarif }} 
+                </div>
+                {% endif %}
+        <div class="mb-3">
+            <label for="tarif" class="form-label" >Nouveau Tarif</label>
+            <input type="text" name="tarif" class="form-control" id="tarif"  placeholder="Choisissez un autre tarif" value="{{ update.tarif }}">
+        </div>
+               {% if errors.picture is defined %}
+                <div class="btn btn-outline-danger">
+                    {{ errors.picture }} 
+                </div>
+                {% endif %}
+        <div class="mb-3">
+            <label for="picture" class="form-label" >Nouvelle Image</label>
+            <input type="file" name="picture" class="form-control" id="picture"  value="{{ update.picture }}">
+        </div>
+       
+        <button class="btn btn-outline-light text-white bg-dark m-auto rounded-pill bg-light text-dark" type="submit">Mise a jour Coach</button>
+        <a href="{{ path('app_home') }}" class="btn btn-outline-light text-white bg-dark m-auto rounded-pill bg-light text-dark">Annuler</a>
+
+
+    </form>
+</div>
+</div>
+
+{% endblock %}

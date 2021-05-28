@@ -6,6 +6,7 @@ use DateTime;
 use App\Entity\User;
 use App\Entity\Comment;
 use App\Form\CommentType;
+use App\Form\RegistrationType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -67,7 +68,7 @@ class CoachController extends AbstractController
     /**
      * @Route("/mon-compte/update", name="app_update")
      */
-    public function update(UserPasswordEncoderInterface $encoder) 
+    public function update(UserPasswordEncoderInterface $encoder, Request $request) 
     {
         // Utilisateur non connecté
         if(empty($this->getUser())){
@@ -117,8 +118,8 @@ class CoachController extends AbstractController
                 $hash = $encoder->encodePassword($user, $user->getPassword());
                 $user->setPassword($hash);
             }
-            $manager->persist($user);
-            $manager->flush();
+            $em->persist($user);
+            $em->flush();
 
             return $this->redirectToRoute('app_home');
         }
@@ -195,6 +196,7 @@ class CoachController extends AbstractController
         */
 
         return $this->render('coach/update.html.twig', [
+            'form' => $form->createView(),
             'update' => $user,
             'errors' => $errors
         ]);
