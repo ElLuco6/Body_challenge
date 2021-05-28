@@ -66,7 +66,6 @@ class CoachController extends AbstractController
 
     /**
      * @Route("/mon-compte/update", name="app_update")
-     
      */
     public function update(UserPasswordEncoderInterface $encoder) 
     {
@@ -155,6 +154,17 @@ class CoachController extends AbstractController
         return $this->render('coach/update.html.twig', [
             'update' => $user,
             'errors' => $errors
+        ]);
+    }
+
+    /**
+     * @Route("/recherche-coach", name="app_search")
+     */
+    public function searchCityCoach() {
+        $cityCoach = $this->getDoctrine()->getRepository(User::class)->findCityCoach();
+        
+        return $this->render('coach/accueil.html.twig', [
+            'cityCoach'=> $cityCoach,
         ]);
     }
 }

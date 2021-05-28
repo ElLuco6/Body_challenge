@@ -58,6 +58,24 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         return $stmt->fetchAll();
     }
 
+    /**
+    * @return User[] Returns an array of User objects
+    */
+    public function findCityCoach(string $city) {
+        $sth = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT * FROM `user` WHERE city = ?';
+
+        $stmt = $sth->prepare($sql);
+
+        $stmt->bindValue(':city', $city);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+
+    }
+
     /*
     public function findOneBySomeField($value): ?User
     {
