@@ -16,10 +16,10 @@
                 <img src="{{ asset('/uploads/photos_coachs/' ~ coach.picture) }}" alt="Image">
                 <div class="card-body">
                   <h5 class="card-title">{{ coach.firstName }}, {{ coach.age }} ans </h5>
-                  <p class="card-text">{{ coach.sport }}.</p>
-                  <p class="card-text">{{ coach.city }}.</p>
-                  <p class="card-text">{{ coach.tarif }} €/heure</p>
-                  <a href="{{ path('app_view', {id: coach.id})}}" class="btn btn-primary m-auto rounded-pill">Voir le coach</a>
+                  <p class="card-text"><i class="las la-running la-2x"></i>{{ coach.sport }}.</p>
+                  <p class="card-text"><i class="las la-map-marker la-2x"></i>{{ coach.city }}.</p>
+                  <p class="card-text"><i class="las la-coins la-2x"></i>{{ coach.tarif }} €/heure</p>
+                  <a href="{{ path('app_view', {id: coach.id})}}" class="btn btn-outline-light text-white bg-dark m-auto rounded-pill bg-light text-dark">Voir le coach</a>
 
         
                 </div>

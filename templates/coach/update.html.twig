@@ -4,7 +4,7 @@
 
 {% block body %}
 
-<div class="row justify-content-center">
+<div class="row justify-content-center mt-5 mb-5">
     <div class="col-6">
     <h1 class="h2">Mise à jours des informations</h1>
       <form method="post">
@@ -129,8 +129,8 @@
             <input type="file" name="picture" class="form-control" id="picture"  value="{{ update.picture }}">
         </div>
        
-        <button class="btn btn-outline-light text-white bg-dark" type="submit">Mise a jour Coach</button>
-        <a href="{{ path('app_home') }}" class="btn btn-outline-light text-white bg-dark">Annuler</a>
+        <button class="btn btn-outline-light text-white bg-dark m-auto rounded-pill bg-light text-dark" type="submit">Mise a jour Coach</button>
+        <a href="{{ path('app_home') }}" class="btn btn-outline-light text-white bg-dark m-auto rounded-pill bg-light text-dark">Annuler</a>
 
 
     </form>

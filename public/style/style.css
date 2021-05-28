@@ -1,5 +1,6 @@
 body {
     background-color: #ffffff;
+    font-family: 'Mitr', sans-serif;
 }
 
 .jaune {
@@ -19,11 +20,10 @@ body {
 }
 #maCarte{
     height: 525px;
+    width: 100%;
+    display: none;
 }
 
-div.macarte {
-    width: 100%;
-}
 
 .carousel-item {
     height: 90vh;
@@ -40,8 +40,8 @@ div.macarte {
 
 footer {
     background-color: #f4f4f4;
-    ;
-    color: #F5F7F7;
+    
+    color: #000417;
     text-align: center;
 }
 
@@ -59,7 +59,7 @@ footer ul {
 }
 
 #reseaux i {
-    color: #F5F7F7;
+    color: #000417;
     font-size: 2rem;
     padding: 10px;
 }
@@ -75,7 +75,7 @@ footer ul {
     border: 5px solid #790311;
     margin: 4%;
     padding: 100px;
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 .bulle1 {
@@ -89,16 +89,7 @@ footer ul {
     margin-bottom: 0px;
 }
 
-/* --------------------------------------------------------- */
-/* VIEW COACH */
-h1.red_view_coach {
-    background-color: #790311;
-}
-
-section.dark_view_coach {
-    background-color: #000417!important;
-}
-
+/*tablette */
 
 @media (min-width: 600px) {
     #bulle {
@@ -110,7 +101,7 @@ section.dark_view_coach {
         padding: 25%;
     }
 }
-
+/*pc*/
 
 @media (min-width: 1250px) {
     #bulle {
@@ -121,4 +112,8 @@ section.dark_view_coach {
 
         padding: 20%;
     }
+    #maCarte{
+        display:block
+
+}
 }
