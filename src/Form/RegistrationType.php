@@ -3,11 +3,14 @@
 namespace App\Form;
 
 use App\Entity\User;
+use Symfony\Component\Mime\Address;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints\Type;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -15,12 +18,12 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class RegistrationType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options, ClassMetadata $metadata)
     {
         $builder
-            ->add('firstName')
-            ->add('lastName')
-            ->add('email')
+            ->add('firstName', new Assert\Type('string'))
+            ->add('lastName', new Assert\Type('string'))
+            ->add('email', Address::class);),
             ->add('roles', ChoiceType::class, [
                 'choices' => [
                     'Membre' => 'ROLE_USER', 
@@ -32,7 +35,10 @@ class RegistrationType extends AbstractType
             ->add('password', PasswordType::class)
             ->add('confirm_password', PasswordType::class)
             // ->add('created_at')
-            ->add('age')
+            ->add('age', new Assert\Type([
+                'type' => 'integer',
+                'message' => 'l {{ Age }} entré doit etre un nombre.',
+            ]));)
             ->add('city')
             ->add('description')
             ->add('sport')
