@@ -1,30 +1,48 @@
 <?php
 
 namespace App\Form;
-
 use App\Entity\User;
-use Symfony\Component\Mime\Address;
+use Doctrine\DBAL\Types\TextType;
+use Doctrine\DBAL\Types\StringType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\Type;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 
 class RegistrationType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options, ClassMetadata $metadata)
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstName', new Assert\Type('string'))
-            ->add('lastName', new Assert\Type('string'))
-            ->add('email', Address::class)
+            ->add('firstName', StringType::class, [
+                'type' => [
+                    'string' => 'firstName', 
+                    
+                ],
+                'required' => true,
+            ])
+            ->add('lastName', StringType::class, [
+                'type' => [
+                    'string' => 'lastName', 
+                    
+                ],
+                'required' => true,
+            ])
+            ->add('email', EmailType::class, [
+                'type' => [
+                    'email' => 'email', 
+                    
+                ],
+                'required' => true,
+            ])
             ->add('roles', ChoiceType::class, [
                 'choices' => [
                     'Membre' => 'ROLE_USER', 
@@ -33,19 +51,64 @@ class RegistrationType extends AbstractType
                 'required' => true,
             ])
             
-            ->add('password', PasswordType::class)
-            ->add('confirm_password', PasswordType::class)
+            ->add('password', PasswordType::class, [
+                'type' => [
+                    'password' => 'password', 
+                    
+                ],
+                'required' => true,
+            ])
+            ->add('confirm_password')
             // ->add('created_at')
-            ->add('age', new Assert\Type([
-                'type' => 'integer',
-                'message' => 'l {{ Age }} entré doit etre un nombre.',
-            ]);
-            ->add('city')
-            ->add('description')
-            ->add('sport')
-            ->add('experience')
-            ->add('education')
-            ->add('tarif')
+            ->add('age', IntegerType::class, [
+                'type' => [
+                    'integer' => 'age', 
+                    
+                ],
+                'required' => true,
+            ])
+            ->add('city', StringType::class, [
+                'type' => [
+                    'string' => 'city', 
+                    
+                ],
+                'required' => true,
+            ])
+            ->add('description', TextType::class, [
+                'type' => [
+                    'text' => 'description', 
+                    
+                ],
+                'required' => true,
+            ])
+            ->add('sport', TextType::class, [
+                'type' => [
+                    'text' => 'sport', 
+                    
+                ],
+                'required' => true,
+            ])
+            ->add('experience', TextType::class, [
+                'type' => [
+                    'text' => 'experience', 
+                    
+                ],
+                'required' => true,
+            ])
+            ->add('education', TextType::class, [
+                'type' => [
+                    'text' => 'experience', 
+                    
+                ],
+                'required' => true,
+            ])
+            ->add('tarif', IntegerType::class, [
+                'type' => [
+                    'integer' => 'tarif', 
+                    
+                ],
+                'required' => true,
+            ])
             ->add('picture', FileType::class, [
                 'mapped'     => false, // Evite qu'il vérifie que ça existe en base
                 'constraints' => [
