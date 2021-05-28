@@ -117,7 +117,16 @@
                 {% endif %}
         <div class="mb-3">
             <label for="tarif" class="form-label" >Nouveau Tarif</label>
-            <input type="text" name="tarif" class="form-control" id="tarif" min="2" placeholder="Choisissez un autre tarif" value="{{ update.tarif }}">
+            <input type="text" name="tarif" class="form-control" id="tarif"  placeholder="Choisissez un autre tarif" value="{{ update.tarif }}">
+        </div>
+               {% if errors.picture is defined %}
+                <div class="btn btn-outline-danger">
+                    {{ errors.picture }} 
+                </div>
+                {% endif %}
+        <div class="mb-3">
+            <label for="picture" class="form-label" >Nouvelle Image</label>
+            <input type="file" name="picture" class="form-control" id="picture"  value="{{ update.picture }}">
         </div>
        
         <button class="btn btn-outline-light text-white bg-dark" type="submit">Mise a jour Coach</button>
