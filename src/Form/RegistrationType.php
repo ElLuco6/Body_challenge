@@ -62,7 +62,6 @@ class RegistrationType extends AbstractType
             ->add('age', IntegerType::class, [
                 'constraints' => [
                     new NotBlank(),
-                    new Length(['min' => 3]),
                 ],
                 'required' => true,
             ])

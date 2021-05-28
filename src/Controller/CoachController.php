@@ -80,8 +80,49 @@ class CoachController extends AbstractController
         // $this->getUser() contient l'utilisateur actuellement connecté. Je peux donc le passé dans le find()
         $user = $em->getRepository(User::class)->find($this->getUser());
 
+        $form = $this->createForm(RegistrationType::class, $user);
+
+        // Analyse la requête
+        $form->handleRequest($request);
+
+        // Vérification du formulaire
+        if($form->isSubmitted() && $form->isValid()) {
+
+            $pictureFile = $form->get('picture')->getData();
+            // Je vérifie que l'image soit bien uploadé
+            if ($pictureFile) {
+                // Je récupère le nom original de l'image
+                $originalFilename = pathinfo($pictureFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // Je nettoie le nom du fichier original, je le slugify pour éviter les caractères accentués , espaces et autres caractères spéciaux
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$pictureFile->guessExtension();
+
+                // Je sauvegarde mon fichier
+                try {
+                    $pictureFile->move(
+                        $this->getParameter('photo_profil_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    //En cas de gros problème (exemple le répertoire d'image n'existe pas)
+                }
+
+                // Ligne a modifier
+                $user->setPicture($newFilename);
+            }
 
 
+            // $form->get('password')->getData() equivalent de $safe['password']
+            if(!empty($form->get('password')->getData())){
+                $hash = $encoder->encodePassword($user, $user->getPassword());
+                $user->setPassword($hash);
+            }
+            $manager->persist($user);
+            $manager->flush();
+
+            return $this->redirectToRoute('app_home');
+        }
+        /*
         if(!empty($_POST)){ // Mon formulaire n'est pas vide
             $safe = array_map('trim', array_map('strip_tags', $_POST));
 
@@ -151,6 +192,8 @@ class CoachController extends AbstractController
                 // Afficher les erreurs
             }
         }
+        */
+
         return $this->render('coach/update.html.twig', [
             'update' => $user,
             'errors' => $errors
