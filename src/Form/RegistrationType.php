@@ -13,6 +13,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 
@@ -23,7 +24,7 @@ class RegistrationType extends AbstractType
         $builder
             ->add('firstName', new Assert\Type('string'))
             ->add('lastName', new Assert\Type('string'))
-            ->add('email', Address::class);),
+            ->add('email', Address::class)
             ->add('roles', ChoiceType::class, [
                 'choices' => [
                     'Membre' => 'ROLE_USER', 
@@ -38,7 +39,7 @@ class RegistrationType extends AbstractType
             ->add('age', new Assert\Type([
                 'type' => 'integer',
                 'message' => 'l {{ Age }} entré doit etre un nombre.',
-            ]));)
+            ]);
             ->add('city')
             ->add('description')
             ->add('sport')

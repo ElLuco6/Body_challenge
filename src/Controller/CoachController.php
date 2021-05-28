@@ -84,24 +84,6 @@ class CoachController extends AbstractController
 
 
         if(!empty($_POST)){ // Mon formulaire n'est pas vide
-            $pictureFile = $form->get('picture')->getData();
-            // Je vérifie que l'image soit bien uploadé
-            if ($pictureFile) {
-                // Je récupère le nom original de l'image
-                $originalFilename = pathinfo($pictureFile->getClientOriginalName(), PATHINFO_FILENAME);
-                // Je nettoie le nom du fichier original, je le slugify pour éviter les caractères accentués , espaces et autres caractères spéciaux
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$pictureFile->guessExtension();
-
-                // Je sauvegarde mon fichier
-                try {
-                    $pictureFile->move(
-                        $this->getParameter('photo_profil_directory'),
-                        $newFilename
-                    );
-                } catch (FileException $e) {
-                    //En cas de gros problème (exemple le répertoire d'image n'existe pas)
-                }
             $safe = array_map('trim', array_map('strip_tags', $_POST));
 
             if(strlen($safe['lastName']) < 3 || strlen($safe['lastName']) > 120){
@@ -115,9 +97,6 @@ class CoachController extends AbstractController
             }
             if(empty($safe['description'])){
                 $errors['description'] = 'La description ne peut être vide';
-            }
-            if(empty($safe['picture'])){
-                $errors['picture'] = 'Le champ image ne peut être vide';
             }
             if(empty($safe['experience'])){
                 $errors['experience'] = "L'experience ne peut être vide";
@@ -143,6 +122,7 @@ class CoachController extends AbstractController
                     $errors['password'] = 'Le mot de passe doit etre aplhanumérique et supérieur à 8 caractere';
                 }
             }
+            
 
              // Ici mon tableau $errors n'a aucune entrée 
              if(count($errors) === 0){
@@ -163,7 +143,6 @@ class CoachController extends AbstractController
                 $user->setExperience($safe['experience']);
                 $user->setEducation($safe['education']);
                 $user->setTarif($safe['tarif']);
-                $user->setPicture($safe['picture']);
                 //$user->setCreatedAt(new \DateTime('now')); // La date & heure de l'instant T
                 
                 $em->persist($user);
@@ -177,7 +156,5 @@ class CoachController extends AbstractController
             'update' => $user,
             'errors' => $errors
         ]);
-        
     }
-
 }
