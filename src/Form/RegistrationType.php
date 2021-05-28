@@ -3,7 +3,6 @@
 namespace App\Form;
 use App\Entity\User;
 use Doctrine\DBAL\Types\TextType;
-use Doctrine\DBAL\Types\StringType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -13,7 +12,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 
@@ -22,26 +20,20 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstName', StringType::class, [
-                'type' => [
-                    'string' => 'firstName', 
-                    
-                ],
-                'required' => true,
+            ->add('firstName', TextType::class, [
+                'constraints' => new Length(['min' => 3]),
             ])
-            ->add('lastName', StringType::class, [
-                'type' => [
-                    'string' => 'lastName', 
-                    
+            ->add('lastName', TextType::class, [
+                'constraints' => [
+                    new NotBlank(),
+                    new Length(['min' => 3]),
                 ],
-                'required' => true,
             ])
+    
             ->add('email', EmailType::class, [
-                'type' => [
-                    'email' => 'email', 
-                    
+                'constraints' => [
+                    new NotBlank(),
                 ],
-                'required' => true,
             ])
             ->add('roles', ChoiceType::class, [
                 'choices' => [
