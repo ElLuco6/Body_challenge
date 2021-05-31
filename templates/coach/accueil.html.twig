@@ -190,11 +190,15 @@
   })
   // On parcourt les différentes villes
   for (ville in villes) {
+    console.log(ville);
     // On crée le marqueur et on lui attribue une popup
     var marqueur = L.marker([villes[ville].lat, villes[ville].lon], {
       icon: icone
     }); //.addTo(carte); Inutile lors de l'utilisation des clusters
-    marqueur.bindPopup("<p>" + ville + "</p>");
+    var popupContent = '<p>'+ville+'</p>';
+    popupContent+= '<br><a href="/recherche-coach/'+ville.toLowerCase() +'">Voir tous les coachs</a>';
+
+    marqueur.bindPopup(popupContent);
     marqueurs.addLayer(marqueur); // On ajoute le marqueur au groupe
 
     // On ajoute le marqueur au tableau

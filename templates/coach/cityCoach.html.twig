@@ -4,7 +4,6 @@
 
 {% block body %}
 <h1 class="text-center">Nos coaches dans votre région</h1>
-<form method="post" action="">
 {% for message in app.flashes('success') %}
 <div class="alert alert-success text-center" role="alert">{{ message }}</div>
 {% endfor %}
@@ -29,6 +28,4 @@
         {% endfor %}
     </div>
 </div>
-</form>
-
 {% endblock %}
