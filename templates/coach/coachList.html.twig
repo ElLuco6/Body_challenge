@@ -18,7 +18,7 @@
                 <div class="card-body">
                   <h5 class="card-title">{{ coach.firstName }}, {{ coach.age }} ans </h5>
                   <p class="card-text"><i class="las la-running la-2x"></i>{{ coach.sport }}.</p>
-                  <p class="card-text"><i class="las la-map-marker la-2x"></i>{{ coach.city }}.</p>
+                  <p class="card-text"><a href="{{ path('app_search', {city: coach.city})}}"><i class="las la-map-marker la-2x"></a></i>{{ coach.city }}.</p>
                   <p class="card-text"><i class="las la-coins la-2x"></i>{{ coach.tarif }} €/heure</p>
                   <a href="{{ path('app_view', {id: coach.id})}}" class="btn btn-outline-light text-white bg-dark m-auto rounded-pill bg-light text-dark">Voir le coach</a>
 
