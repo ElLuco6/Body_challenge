@@ -8,7 +8,7 @@
     <div class="carousel-item active">
       <img src="https://cdn.confortdevie.com/wp-content/uploads/2019/05/Legging-sport-femme-e1572055012928.jpg"
         class="d-block w-100" alt="carousel1">
-        <div class="carousel-caption">
+      <div class="carousel-caption">
         <h5>First slide label</h5>
         <p>Some representative placeholder content for the first slide.</p>
       </div>
@@ -17,11 +17,11 @@
       <img src="{{ asset('images/caroussel.jpg') }}" class="d-block w-100 img-fluid" alt="carousel2">
       <h2 class="position-absolute top-50 start-50 translate-middle h1">Challenge your limite</h2>
     </div>
-    
+
     <div class="carousel-item">
-      <img src="https://www.cros-rhonealpes.fr/wp-content/uploads/2020/04/performance-sportive.jpg"
+      <img src="https://image.shutterstock.com/shutterstock/photos/1702960783/display_1500/stock-vector-abstract-background-with-straight-lines-and-splashes-in-minimalist-flat-style-vector-suitable-1702960783.jpg"
         class="d-block w-100" alt="carousel3">
-        <h2 class="position-absolute top-50 start-50 translate-middle h1">Challenge your limite</h2>
+      <h2 class="position-absolute top-50 start-50 translate-middle h1">Challenge your limite</h2>
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -35,31 +35,35 @@
 </div>
 
 
-<section class="container-fluid mt-5">
-  <div class="row">
-    <div class="col-md-8 d-flex">
+<section class="container-fluid mt-5 sm text-center">
+  <a href="{{ path('app_coach') }}"
+    class="h1 p-2 text-white bg-dark rounded bg-light text-dark text-decoration-none ">Trouve ton Coach</a>
+  <div class="row mt-5">
+    <div class="col-md d-flex">
       {% for coach in coaches %}
-    <div class="col">
-      <div class="card text-center" style="width: 18rem;">
-        <img src="{{ asset('/uploads/photos_coachs/' ~ coach.picture) }}" alt="Image" class="img-acceuil">
-        <div class="card-body">
-          <h5 class="card-title">{{ coach.first_name }}, {{ coach.age }} ans</h5>
-          <p class="card-text"><i class="las la-map-marker la-2x"></i>{{ coach.city }}</p>
-          <p class="card-text"><i class="las la-running la-2x"></i>{{ coach.sport }}</p>
-          <p class="card-text">{{ coach.tarif }} €/l'heure</p>
-          <a href="{{ path('app_view', {id: coach.id})}}" class="btn btn-dark">Voir le coach</a>
+      <div class="col">
+        <div class="card text-center" style="width: 18rem;">
+          <img src="{{ asset('/uploads/photos_coachs/' ~ coach.picture) }}" alt="Image" class="img-acceuil">
+          <div class="card-body">
+            <h5 class="card-title">{{ coach.first_name }}, {{ coach.age }} ans</h5>
+            <p class="card-text"><i class="las la-map-marker la-2x"></i>{{ coach.city }}</p>
+            <p class="card-text"><i class="las la-running la-2x"></i>{{ coach.sport }}</p>
+            <p class="card-text">{{ coach.tarif }} €/l'heure</p>
+            <a href="{{ path('app_view', {id: coach.id})}}" class="btn btn-dark">Voir le coach</a>
+          </div>
         </div>
       </div>
+      {% endfor %}
     </div>
-    {% endfor %}
     </div>
-    <!-- Ici une col-->
-    <div class="col-md-4">
-      <div class="col-6 macarte" id="maCarte"> </div>
-    </div>
-  </div>
 </section>
+<div class="col-12 mt-5">
+  <h2 class="text-center mb-5"><span class=" h1 text-white bg-dark rounded bg-light text-dark mb-5 p-2">Les villes ou
+      Body Challenge est disponbile</span>
+    <h2>
+      <div class="col-5 " id="maCarte"> </div>
 
+</div>
 
 {% endblock %}
 
@@ -179,11 +183,11 @@
 
   // On personnalise le marqueur
   var icone = L.icon({
-      iconUrl: "images/marqueur.png",
-      iconSize: [50, 50],
-      iconAnchor: [25, 50],
-      popupAnchor: [0, -50]
-    }) 
+    iconUrl: "images/marqueur.png",
+    iconSize: [50, 50],
+    iconAnchor: [25, 50],
+    popupAnchor: [0, -50]
+  })
   // On parcourt les différentes villes
   for (ville in villes) {
     // On crée le marqueur et on lui attribue une popup
