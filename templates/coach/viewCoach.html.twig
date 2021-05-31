@@ -19,7 +19,7 @@
         <div class="col-12 col-md-4">
             <img src="{{ asset('/uploads/photos_coachs/' ~ coaches.picture) }}" alt="Image" class=" rounded-circle">
             <p>{{ coaches.firstName }}, {{ coaches.age }} ans</p>
-            <p><i class="las la-map-marker la-2x"></i> {{ coaches.city }}</p>
+           <p class="card-text"><a href="{{ path('app_search', {city: coaches.city})}}"><i class="las la-map-marker la-2x"></a></i>{{ coaches.city }}.</p>
             {# le length permet d'additioner le nombres d'avis sur le coach #}
             <p><a href="#avis">{{ coaches.comments | length }} avis</a></p>
             <a href="#" type="submit" class="btn btn-outline-light text-white bg-dark">Réserver</a>
