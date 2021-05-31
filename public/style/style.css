@@ -55,9 +55,10 @@ footer ul {
 }
 
 #reseaux i {
-    color: #000417;
+    color: #ffffff;
     font-size: 2rem;
     padding: 10px;
+    background-color:#000417;
 }
 
 #bulle {
@@ -70,7 +71,7 @@ footer ul {
     border-radius: 10%;
     border: 5px solid #ffffff;
     margin: 4%;
-    padding: 100px;
+    padding: 90px;
     font-size: 2rem;
 }
 
