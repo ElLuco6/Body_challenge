@@ -39,7 +39,7 @@
   <a href="{{ path('app_coach') }}"
     class="h1 p-2 text-white bg-dark rounded bg-light text-dark text-decoration-none ">Trouve ton Coach</a>
   <div class="row mt-5">
-    <div class="col-md d-flex">
+    <div class="col-md d-flex" id="coachesAccueil">
       {% for coach in coaches %}
       <div class="col">
         <div class="card text-center" style="width: 18rem;">
@@ -58,9 +58,8 @@
     </div>
 </section>
 <div class="col-12 mt-5">
-  <h2 class="text-center mb-5"><span class=" h1 text-white bg-dark rounded bg-light text-dark mb-5 p-2">Les villes ou
-      Body Challenge est disponbile</span>
-    <h2>
+   <h2 class="text-center mb-5"><span class="p-2 rounded " id="titre">Nos coaches en France</span></h2>
+    
       <div class="col-5 " id="maCarte"> </div>
 
 </div>

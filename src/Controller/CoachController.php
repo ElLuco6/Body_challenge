@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -68,7 +69,7 @@ class CoachController extends AbstractController
     /**
      * @Route("/mon-compte/update", name="app_update")
      */
-    public function update(UserPasswordEncoderInterface $encoder, Request $request) 
+    public function update(UserPasswordEncoderInterface $encoder, Request $request,SluggerInterface $slugger ) 
     {
         // Utilisateur non connecté
         if(empty($this->getUser())){

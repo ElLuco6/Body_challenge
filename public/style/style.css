@@ -84,10 +84,14 @@ footer ul {
     background-color: #000417;
     margin-bottom: 0px;
 }
+#titre{
+    color: #F5F7F7;
+    background-color: #000417;
+}
 
 /*tablette */
 
-@media (min-width: 600px) {
+@media (max-width: 600px) {
     #bulle {
         grid-template-columns: 1fr 1fr;
     }
@@ -96,9 +100,9 @@ footer ul {
 
         padding: 25%;
     }
-    #coachAcceil{
+    #coachesAccueil{
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr
     }
 }
 /*pc*/
