@@ -21,7 +21,7 @@ body {
 #maCarte{
     height: 525px;
     width: 100%;
-    
+
 }
 
 
@@ -36,7 +36,7 @@ body {
 
 footer {
     background-color: #f4f4f4;
-    
+
     color: #000417;
     text-align: center;
 }
@@ -89,7 +89,7 @@ footer ul {
     background-color: #000417;
 }
 
-/*tablette */
+/*tablette /
 
 @media (max-width: 600px) {
     #bulle {
@@ -106,7 +106,7 @@ footer ul {
     }
 
 }
-/*pc*/
+/pc*/
 
 @media (min-width: 1250px) {
     #bulle {
