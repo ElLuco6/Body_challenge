@@ -61,7 +61,7 @@ class RegistrationType extends AbstractType
                 'constraints' => [
                     new NotBlank(),
                 ],
-                'required' => true,
+                'required' => false,
             ])
             ->add('confirm_password')
             // ->add('created_at')
@@ -117,7 +117,7 @@ class RegistrationType extends AbstractType
                 'mapped'     => false, // Evite qu'il vérifie que ça existe en base
                 'constraints' => [
                     new File([
-                        'maxSize'   => '1024k',
+                        'maxSize'   => '2M',
                         'mimeTypes' => [
                             'image/jpg',
                             'image/jpeg',
