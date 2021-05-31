@@ -64,11 +64,11 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     public function findCityCoach(string $city) {
         $sth = $this->getEntityManager()->getConnection();
 
-        $sql = 'SELECT * FROM `user` WHERE city = ?';
+        $sql = 'SELECT * FROM `user` WHERE city = :city';
 
         $stmt = $sth->prepare($sql);
 
-        $stmt->bindValue(':city', $city);
+        $stmt->bindValue(':city', $city, \PDO::PARAM_STR);
 
         $stmt->execute();
 

@@ -3,7 +3,8 @@
 {% block title %}Coach dans votre région{% endblock %}
 
 {% block body %}
-<h1>Coach dans votre région</h1>
+<h1 class="text-center">Nos coaches dans votre région</h1>
+<form method="post" action="">
 {% for message in app.flashes('success') %}
 <div class="alert alert-success text-center" role="alert">{{ message }}</div>
 {% endfor %}
@@ -15,11 +16,11 @@
             <div class="card text-center mt-5" style="width: 18rem;">
                 <img src="{{ asset('/uploads/photos_coachs/' ~ coach.picture) }}" alt="Image">
                 <div class="card-body">
-                  <h5 class="card-title">{{ coach.firstName }}, {{ coach.age }} ans </h5>
+                  <h5 class="card-title">{{ coach.first_name }}, {{ coach.age }} ans </h5>
                   <p class="card-text">{{ coach.sport }}.</p>
                   <p class="card-text">{{ coach.city }}.</p>
                   <p class="card-text">{{ coach.tarif }} €/heure</p>
-                  <a href="{{ path('app_view', {id: coach.id})}}" class="btn btn-primary m-auto rounded-pill">Voir le coach</a>
+                  <a href="" class="btn btn-primary m-auto rounded-pill">Voir le coach</a>
 
         
                 </div>
@@ -28,8 +29,6 @@
         {% endfor %}
     </div>
 </div>
-
-
-
+</form>
 
 {% endblock %}

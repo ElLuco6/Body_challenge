@@ -109,7 +109,7 @@ class CoachController extends AbstractController
                     //En cas de gros problème (exemple le répertoire d'image n'existe pas)
                 }
 
-                // Ligne a modifier
+                // Modifie l ancienne  image dans la bdd
                 $user->setPicture($newFilename);
             }
 
@@ -204,13 +204,13 @@ class CoachController extends AbstractController
     }
 
     /**
-     * @Route("/recherche-coach", name="app_search")
+     * @Route("/recherche-coach/{city}", name="app_search")
      */
-    public function searchCityCoach() {
-        $cityCoach = $this->getDoctrine()->getRepository(User::class)->findCityCoach();
+    public function searchCityCoach(string $city) {
+        $coaches = $this->getDoctrine()->getRepository(User::class)->findCityCoach($city);
         
-        return $this->render('coach/accueil.html.twig', [
-            'cityCoach'=> $cityCoach,
+        return $this->render('coach/cityCoach.html.twig', [
+            'coaches'=> $coaches,
         ]);
     }
 }
