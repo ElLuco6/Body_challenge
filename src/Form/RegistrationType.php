@@ -37,6 +37,12 @@ class RegistrationType extends AbstractType
                     new Length(['min' => 3]),
                 ],
             ])
+
+            ->add('age', IntegerType::class, [
+                'constraints' => [
+                    new NotBlank(),
+                ],
+            ])
     
             ->add('email', EmailType::class, [
                 'constraints' => [
@@ -59,7 +65,7 @@ class RegistrationType extends AbstractType
             ])
             ->add('confirm_password')
             // ->add('created_at')
-            ->add('age', IntegerType::class, [
+            ->add('confirm_password', PasswordType::class, [
                 'constraints' => [
                     new NotBlank(),
                 ],
