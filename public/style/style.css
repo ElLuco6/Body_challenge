@@ -109,6 +109,8 @@ footer ul {
 }
 /pc*/
 
+/* CoachList */
+
 @media (min-width: 1250px) {
     #bulle {
         grid-template-columns: 1fr 1fr 1fr 1fr;

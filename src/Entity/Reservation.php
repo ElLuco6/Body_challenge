@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ReservationRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -26,6 +28,21 @@ class Reservation
      * @ORM\Column(type="integer")
      */
     private $duration;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $calendar;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="reservations")
+     */
+    private $relation;
+
+    public function __construct()
+    {
+        $this->relation = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -52,6 +69,42 @@ class Reservation
     public function setDuration(int $duration): self
     {
         $this->duration = $duration;
+
+        return $this;
+    }
+
+    public function getCalendar(): ?string
+    {
+        return $this->calendar;
+    }
+
+    public function setCalendar(?string $calendar): self
+    {
+        $this->calendar = $calendar;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getRelation(): Collection
+    {
+        return $this->relation;
+    }
+
+    public function addRelation(User $relation): self
+    {
+        if (!$this->relation->contains($relation)) {
+            $this->relation[] = $relation;
+        }
+
+        return $this;
+    }
+
+    public function removeRelation(User $relation): self
+    {
+        $this->relation->removeElement($relation);
 
         return $this;
     }

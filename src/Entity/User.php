@@ -109,9 +109,15 @@ class User implements UserInterface
      */
     private $picture;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Reservation::class, mappedBy="relation")
+     */
+    private $reservations;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -353,6 +359,33 @@ class User implements UserInterface
     public function setPicture(?string $picture): self
     {
         $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Reservation[]
+     */
+    public function getReservations(): Collection
+    {
+        return $this->reservations;
+    }
+
+    public function addReservation(Reservation $reservation): self
+    {
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations[] = $reservation;
+            $reservation->addRelation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): self
+    {
+        if ($this->reservations->removeElement($reservation)) {
+            $reservation->removeRelation($this);
+        }
 
         return $this;
     }

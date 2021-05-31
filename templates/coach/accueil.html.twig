@@ -49,7 +49,7 @@
             <p class="card-text"><a href="{{ path('app_search', {city: coach.city})}}"><i class="las la-map-marker la-2x"></a></i>{{ coach.city }}.</p>
             <p class="card-text"><i class="las la-running la-2x"></i>{{ coach.sport }}</p>
             <p class="card-text">{{ coach.tarif }} €/l'heure</p>
-            <a href="{{ path('app_search', {city: coach.city})}}"><i class="las la-search"></a></i>
+            <a class="btn btn-dark" href="{{ path('app_view', {id: coach.id})}}">Voir le coach</a>
           </div>
         </div>
       </div>
