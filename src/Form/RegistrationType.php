@@ -109,7 +109,7 @@ class RegistrationType extends AbstractType
             ->add('tarif', IntegerType::class, [
                 'constraints' => [
                     new NotBlank(),
-                    new Length(['min' => 3]),
+                    new Length(['min' => 1]),
                 ],
                 'required' => true,
             ])

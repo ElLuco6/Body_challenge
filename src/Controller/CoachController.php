@@ -151,4 +151,34 @@ class CoachController extends AbstractController
     public function reservation() {
         return $this->render('coach/reservation.html.twig');
     }
+
+    #Supprimer les données d'un coach
+   /**
+     * @Route("/delete/{id}", name="delete_coach")
+     */
+    public function delete(int $id): Response
+    {
+        $em = $this->getDoctrine()->getManager(); // Connexion
+        $coach = $em->getRepository(User::class)->find($id);
+
+        if(empty($coach)){
+            throw $this->createNotFoundException("Le profil n'existe pas");
+        }
+
+
+        if(!empty($_POST)){
+            if(isset($_POST['confirm']) && $_POST['confirm'] === 'yes'){
+
+                $em->remove($coach);
+                $em->flush();
+
+                $this->addFlash('success', 'Votre profil a bien été supprimé');
+                return $this->redirectToRoute('app_home');
+            }
+        }
+
+        return $this->render('coach/delete.html.twig', [
+            'coach' => $coach,
+        ]);
+    }
 }
