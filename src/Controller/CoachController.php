@@ -24,9 +24,12 @@ class CoachController extends AbstractController
     public function home() {
 
         $coaches = $this->getDoctrine()->getRepository(User::class)->findRandomCoach(6);
-        
+        // $form = $this->createFormBuilder()
+        // ->setAction($this>generateUrl('app_findcity'))
+        // ->add('search' ,TextType::class)
+        // ->getForm();
         return $this->render('coach/accueil.html.twig', [
-            'coaches'=> $coaches,
+            'coaches'=> $coaches
         ]);
     }
     /**
@@ -139,6 +142,18 @@ class CoachController extends AbstractController
      */
     public function searchCityCoach(string $city) {
         $coaches = $this->getDoctrine()->getRepository(User::class)->findCityCoach($city);
+        
+        return $this->render('coach/cityCoach.html.twig', [
+            'coaches'=> $coaches,
+        ]);
+    }
+      /**
+     * @Route("/recherche-ville", name="app_findcity")
+     */
+    public function findByCity(Request $request) {
+
+       $searchcity = $request->request->get('search');
+       $coaches = $this->getDoctrine()->getRepository(User::class)->findCityCoach($searchcity);
         
         return $this->render('coach/cityCoach.html.twig', [
             'coaches'=> $coaches,
