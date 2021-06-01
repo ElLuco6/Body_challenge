@@ -9,12 +9,12 @@ body {
 }
 
 .carousel-item {
-    height: 80vh;
+    height: 30vh;
 
 }
 
 .carousel-img {
-    height: 80vh;
+    height: 30vh;
 }
 
 footer {
@@ -75,7 +75,7 @@ footer ul {
 
 /*tablette */
 
-@media (max-width: 600px) {
+@media (min-width: 600px) {
     #bulle {
         grid-template-columns: 1fr 1fr;
     }
@@ -84,10 +84,15 @@ footer ul {
 
         padding: 25%;
     }
-    #coachesAccueil{
-        display: grid;
-        grid-template-columns: 1fr
+    .carousel-item {
+        height: 50vh;
+    
     }
+    
+    .carousel-img {
+        height: 50vh;
+    }
+
 
 }
 /*pc*/
@@ -103,5 +108,14 @@ footer ul {
 
         padding: 20%;
     }
+
+.carousel-item {
+    height: 80vh;
+
+}
+
+.carousel-img {
+    height: 80vh;
+}
     
 }
