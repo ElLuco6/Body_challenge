@@ -4,14 +4,15 @@
 
 {% block body %}
 {% for message in app.flashes('success') %}
-    <div class="alert-success text-center mt-3">
-        {{ message }}
-    </div>
+<div class="alert-success text-center mt-3">
+    {{ message }}
+</div>
 {% endfor %}
 
 <section class="container mt-5 text-center">
     <div>
-        <h1 class="fs-6 p-3 mb-5 text-white bg-dark rounded-top rounded-bottom red_view_coach">Nos cours sont disponibles durant le
+        <h1 class="fs-6 p-3 mb-5 text-white bg-dark rounded-top rounded-bottom red_view_coach">Nos cours sont
+            disponibles durant le
             confinement ❤️ ! C'est le moment de se remettre en forme 💪 et de stimuler son immunité 🍎🍋🥝 pour détruire
             le COVID-19 🔥</h1>
     </div>
@@ -19,10 +20,19 @@
         <div class="col-12 col-md-4">
             <img src="{{ asset('/uploads/photos_coachs/' ~ coaches.picture) }}" alt="Image" class=" rounded-circle">
             <p>{{ coaches.firstName }}, {{ coaches.age }} ans</p>
-           <p class="card-text"><a href="{{ path('app_search', {city: coaches.city})}}"><i class="las la-map-marker la-2x"></a></i>{{ coaches.city }}.</p>
+            <p class="card-text"><a href="{{ path('app_search', {city: coaches.city})}}"><i
+                        class="las la-map-marker la-2x"></a></i>{{ coaches.city }}.</p>
             {# le length permet d'additioner le nombres d'avis sur le coach #}
             <p><a href="#avis">{{ coaches.comments | length }} avis</a></p>
-            <a href="https://calendly.com/saintsuperylucas/60min?back=1&month=2021-06" type="submit" class="btn btn-outline-light text-white bg-dark">Réserver</a>
+            {% if not app.user %}
+            <a href="{{ path('app_login') }}" type="submit"
+                class="btn btn-outline-light text-white bg-dark">Connectez-vous</a>
+            <a href="{{ path('app_inscription') }}" type="submit"
+                class="btn btn-outline-light text-white bg-dark">Inscrivez-vous</a>
+            {% else %}
+            <a href="https://calendly.com/saintsuperylucas/60min?back=1&month=2021-06" type="submit"
+                class="btn btn-outline-light text-white bg-dark">Réserver</a>
+            {% endif %}
         </div>
         <div class="col-12 col-md-4">
             <p class="fs-1 m-0"><i class="las la-graduation-cap la-lg"></i></p>
@@ -43,6 +53,17 @@
     </div>
 </section>
 
+
+
+{% if not app.user %}
+<div class="container">
+    <p>Pour laisser un commentaire</p>
+    <a href="{{ path('app_login') }}" type="submit"
+        class="btn btn-outline-light text-white bg-dark text-center">Connectez-vous</a>
+    <a href="{{ path('app_inscription') }}" type="submit"
+        class="btn btn-outline-light text-white bg-dark text-center">Inscrivez-vous</a>
+</div>
+{% else %}
 <section class="container commentaire mt-5" id="avis">
     <h1>Commentaires :</h1>
     {% for comment in coaches.comments %}
@@ -53,15 +74,15 @@
     <p>{{ comment.content }}</p>
     {% endfor %}
 </section>
+<div class="container pb-3 bg-dark">
+    {{ form_start(commentForm) }}
+    {{ form_row(commentForm.title, {'attr': {'placeholder': "Votre titre"}})}}
+    {{ form_row(commentForm.author, {'attr': {'placeholder': "Votre nom"}})}}
+    {{ form_row(commentForm.content, {'attr': {'placeholder': "Votre contenu"}})}}
 
-    <div class="container pb-3 bg-dark">
-        {{ form_start(commentForm) }}
-        {{ form_row(commentForm.title, {'attr': {'placeholder': "Votre titre"}})}}
-        {{ form_row(commentForm.author, {'attr': {'placeholder': "Votre nom"}})}}
-        {{ form_row(commentForm.content, {'attr': {'placeholder': "Votre contenu"}})}}
+    <button type="submit" class="btn btn-outline-light text-white bg-dark mt-3">Commenter</button>
 
-        <button type="submit" class="btn btn-outline-light text-white bg-dark mt-3">Commenter</button>
-
-        {{ form_end(commentForm) }}
-    </div>
+    {{ form_end(commentForm) }}
+</div>
+{% endif %}
 {% endblock %}
