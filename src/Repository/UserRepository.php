@@ -39,7 +39,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     /**
     * @return User[] Returns an array of User objects
     */
-    public function findRandomCoach(int $limit = 5)
+    public function findRandomCoach(int $limit = 6)
     {   
         //Lister de manieres aléatoire 5 coaches sur la page d'acceuil avec la function RAND() avec une requête SQL classique
         // On se connecte
