@@ -19,7 +19,8 @@
     </div>
 
     <div class="carousel-item">
-      <img src="https://image.shutterstock.com/shutterstock/photos/1702960783/display_1500/stock-vector-abstract-background-with-straight-lines-and-splashes-in-minimalist-flat-style-vector-suitable-1702960783.jpg"
+      <img
+        src="https://image.shutterstock.com/shutterstock/photos/1702960783/display_1500/stock-vector-abstract-background-with-straight-lines-and-splashes-in-minimalist-flat-style-vector-suitable-1702960783.jpg"
         class="d-block w-100" alt="carousel3">
       <h2 class="position-absolute top-50 start-50 translate-middle h1">Challenge your limite</h2>
     </div>
@@ -35,18 +36,18 @@
 </div>
 
 
-<section class="container-fluid mt-5 sm text-center">
+<section class="container mt-5 text-center">
   <a href="{{ path('app_coach') }}"
     class="h1 p-2 text-white bg-dark rounded bg-light text-dark text-decoration-none ">Trouve ton Coach</a>
-  <div class="row mt-5">
-    <div class="col-md d-flex" id="coachesAccueil">
+  <div class="row">
       {% for coach in coaches %}
-      <div class="col">
-        <div class="card text-center" style="width: 18rem;">
+      <div class="col-md-4 col-sm-12">
+        <div class="card text-center mt-5 m-auto" style="width: 18rem;">
           <img src="{{ asset('/uploads/photos_coachs/' ~ coach.picture) }}" alt="Image" class="img-acceuil">
           <div class="card-body">
             <h5 class="card-title">{{ coach.first_name }}, {{ coach.age }} ans</h5>
-            <p class="card-text"><a href="{{ path('app_search', {city: coach.city})}}"><i class="las la-map-marker la-2x"></a></i>{{ coach.city }}.</p>
+            <p class="card-text"><a href="{{ path('app_search', {city: coach.city})}}"><i
+                  class="las la-map-marker la-2x"></a></i>{{ coach.city }}.</p>
             <p class="card-text"><i class="las la-running la-2x"></i>{{ coach.sport }}</p>
             <p class="card-text">{{ coach.tarif }} €/l'heure</p>
             <a class="btn btn-dark" href="{{ path('app_view', {id: coach.id})}}">Voir le coach</a>
@@ -54,13 +55,12 @@
         </div>
       </div>
       {% endfor %}
-    </div>
-    </div>
+  </div>
 </section>
 <div class="col-12 mt-5">
-   <h2 class="text-center mb-5"><span class="p-2 rounded " id="titre">Nos coaches en France</span></h2>
-    
-      <div class="col-5 " id="maCarte"> </div>
+  <h2 class="text-center mb-5"><span class="p-2 rounded " id="titre">Nos coaches en France</span></h2>
+
+  <div class="col-5 " id="maCarte"> </div>
 
 </div>
 
@@ -195,8 +195,8 @@
     var marqueur = L.marker([villes[ville].lat, villes[ville].lon], {
       icon: icone
     }); //.addTo(carte); Inutile lors de l'utilisation des clusters
-    var popupContent = '<p>'+ville+'</p>';
-    popupContent+= '<br><a href="/recherche-coach/'+ville.toLowerCase() +'">Voir tous les coachs</a>';
+    var popupContent = '<p>' + ville + '</p>';
+    popupContent += '<br><a href="/recherche-coach/' + ville.toLowerCase() + '">Voir tous les coachs</a>';
 
     marqueur.bindPopup(popupContent);
     marqueurs.addLayer(marqueur); // On ajoute le marqueur au groupe

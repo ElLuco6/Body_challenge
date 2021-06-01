@@ -9,25 +9,27 @@
 {% endfor %}
 
 <div class="container">
-     <h1 class="text-center mt-5 "><span class="p-2 rounded " id="titre">Nos coaches</span></h1>
-    <div class="row">
-        {% for coach in coaches %}
-        <div class="col-md-4 col-sm-12">
-            <div class="card text-center mt-5 rounded-3" style="width: 18rem;">
-                <img src="{{ asset('/uploads/photos_coachs/' ~ coach.picture) }}" alt="Image">
-                <div class="card-body">
-                  <h5 class="card-title">{{ coach.firstName }}, {{ coach.age }} ans </h5>
-                  <p class="card-text"><i class="las la-running la-2x"></i>{{ coach.sport }}.</p>
-                  <p class="card-text"><a href="{{ path('app_search', {city: coach.city})}}"><i class="las la-map-marker la-2x"></a></i>{{ coach.city }}.</p>
-                  <p class="card-text"><i class="las la-coins la-2x"></i>{{ coach.tarif }} €/heure</p>
-                  <a href="{{ path('app_view', {id: coach.id})}}" class="btn btn-outline-light text-white bg-dark m-auto rounded-pill bg-light text-dark">Voir le coach</a>
+  <h1 class="text-center mt-5 "><span class="p-2 rounded " id="titre">Nos coaches</span></h1>
+  <div class="row">
+    {% for coach in coaches %}
+    <div class="col-md-4 col-sm-12">
+      <div class="card text-center mt-5 rounded-3 m-auto" style="width: 18rem;">
+        <img src="{{ asset('/uploads/photos_coachs/' ~ coach.picture) }}" alt="Image">
+        <div class="card-body">
+          <h5 class="card-title">{{ coach.firstName }}, {{ coach.age }} ans </h5>
+          <p class="card-text"><i class="las la-running la-2x"></i>{{ coach.sport }}.</p>
+          <p class="card-text"><a href="{{ path('app_search', {city: coach.city})}}"><i
+                class="las la-map-marker la-2x"></a></i>{{ coach.city }}.</p>
+          <p class="card-text"><i class="las la-coins la-2x"></i>{{ coach.tarif }} €/heure</p>
+          <a href="{{ path('app_view', {id: coach.id})}}"
+            class="btn btn-outline-light text-white bg-dark m-auto rounded-pill bg-light text-dark">Voir le coach</a>
 
-        
-                </div>
-              </div>
+
         </div>
-        {% endfor %}
+      </div>
     </div>
+    {% endfor %}
+  </div>
 </div>
 
 

@@ -3,13 +3,13 @@
 {% block title %}{% endblock %}
 {% block stylesheets %}
 <style>
-.only-coach {
-    display:none;
-}
+    .only-coach {
+        display: none;
+    }
 
-.only-view {
-    display:none;
-}
+    .only-view {
+        display: none;
+    }
 </style>
 {% endblock %}
 
@@ -30,49 +30,51 @@
 
     {{ form_row(form.password, {'label': 'Mot de passe','attr': {'placeholder': 'Entrez votre mot de passe'}}) }}
 
-    {{ form_row(form.confirm_password, {'label': 'Confirmation mot de passe','attr': {'placeholder': 'Entrez votre mot de passe'}}) }}
+    {{ form_row(form.confirm_password, {'label': 'Confirmation mot de passe','attr': {'placeholder': 'Entrez votre mot de passe'}})
+    }}
 
-    {{ form_row(form.roles) }} 
+    {{ form_row(form.roles) }}
 
 
-<div class="coach only-view only-coach" id="1" {% if "ROLE_COACH" in app.user.getRoles(true) %} style="display:block" {% endif %}>
-    {{ form_row(form.city, {'label': 'Ville','attr': {'placeholder': 'Entrez votre ville'}}) }}
+    <div class="coach only-view only-coach" id="1" {% if "ROLE_COACH" in app.user.getRoles(true) %}
+        style="display:block" {% endif %}>
+        {{ form_row(form.city, {'label': 'Ville','attr': {'placeholder': 'Entrez votre ville'}}) }}
 
-    {{ form_row(form.sport, {'label': 'Spécialité','attr': {'placeholder': 'Entrez votre spécialité'}}) }}
+        {{ form_row(form.sport, {'label': 'Spécialité','attr': {'placeholder': 'Entrez votre spécialité'}}) }}
 
-    {{ form_row(form.description, {'label': 'Description','attr': {'placeholder': 'Entrez votre description'}}) }}
+        {{ form_row(form.description, {'label': 'Description','attr': {'placeholder': 'Entrez votre description'}}) }}
 
-    {{ form_row(form.education, {'label': 'Formation','attr': {'placeholder': 'Entrez votre formation'}}) }}
+        {{ form_row(form.education, {'label': 'Formation','attr': {'placeholder': 'Entrez votre formation'}}) }}
 
-    {{ form_row(form.experience, {'label': 'Expérience','attr': {'placeholder': 'Entrez votre expérience'}}) }}
+        {{ form_row(form.experience, {'label': 'Expérience','attr': {'placeholder': 'Entrez votre expérience'}}) }}
 
-    {{ form_row(form.tarif, {'label': 'Tarif','attr': {'placeholder': 'Entrez votre tarif'}}) }}
+        {{ form_row(form.tarif, {'label': 'Tarif','attr': {'placeholder': 'Entrez votre tarif'}}) }}
 
-    {{ form_row(form.picture, {'label': 'Photo de profil','attr': {'accept': 'image/*'}}) }}
-</div>
-    
+        {{ form_row(form.picture, {'label': 'Photo de profil','attr': {'accept': 'image/*'}}) }}
+    </div>
 
-    <button type="submit" class="btn btn-outline-light text-white bg-dark m-auto rounded-pill bg-light text-dark mt-5">S'enregistrer</button>
-    <button type="submit" class="btn btn-outline-light text-white bg-danger m-auto rounded-pill text-dark mt-5">Supprimer le profil</a>
-    {{ form_end(form) }}
+
+    <button type="submit"
+        class="btn btn-outline-light text-white bg-dark m-auto rounded-pill bg-light text-dark mt-5">S'enregistrer</button>
+    <button type="submit"
+        class="btn btn-outline-light text-white bg-danger m-auto rounded-pill text-dark mt-5">Supprimer le profil</a>
+        {{ form_end(form) }}
 </section>
 {% endblock %}
 
 
 {% block javascripts %}
 <script>
+    let selectRole = document.querySelector('#registration_roles');
 
-let selectRole = document.querySelector('#registration_roles');
-
-selectRole.addEventListener('change', function(event){
-    console.log('Le role choisi est : '+event.target.value);
-    if(event.target.value == 'ROLE_USER') {
-        document.getElementById('1').style.display = "none";
-    }
-    else {
-        (event.target.value == 'ROLE_COACH')
-        document.getElementById('1').style.display = "block";
-    }
-})
+    selectRole.addEventListener('change', function (event) {
+        console.log('Le role choisi est : ' + event.target.value);
+        if (event.target.value == 'ROLE_USER') {
+            document.getElementById('1').style.display = "none";
+        } else {
+            (event.target.value == 'ROLE_COACH')
+            document.getElementById('1').style.display = "block";
+        }
+    })
 </script>
 {% endblock %}
