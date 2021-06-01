@@ -23,7 +23,7 @@ class CoachController extends AbstractController
      */
     public function home() {
 
-        $coaches = $this->getDoctrine()->getRepository(User::class)->findRandomCoach(4);
+        $coaches = $this->getDoctrine()->getRepository(User::class)->findRandomCoach(6);
         
         return $this->render('coach/accueil.html.twig', [
             'coaches'=> $coaches,
