@@ -2,28 +2,11 @@ body {
     background-color: #ffffff;
     font-family: 'Mitr', sans-serif;
 }
-
-.jaune {
-    color: #EDB518;
-}
-
-.rouge {
-    color: #790311;
-}
-
-.blanc {
-    color: #F5F7F7;
-}
-
-.noir {
-    color: #000417;
-}
 #maCarte{
     height: 525px;
     width: 100%;
 
 }
-
 
 .carousel-item {
     height: 80vh;
@@ -55,10 +38,10 @@ footer ul {
 }
 
 #reseaux i {
-    color: #ffffff;
+    color: #000417;
     font-size: 2rem;
     padding: 10px;
-    background-color:#000417;
+    
 }
 
 #bulle {
@@ -81,7 +64,7 @@ footer ul {
 }
 
 #copyright {
-    color: #F5F7F7;
+    color: #000417;
     background-color: #000417;
     margin-bottom: 0px;
 }
@@ -90,7 +73,7 @@ footer ul {
     background-color: #000417;
 }
 
-/*tablette /
+/*tablette */
 
 @media (max-width: 600px) {
     #bulle {
@@ -107,7 +90,7 @@ footer ul {
     }
 
 }
-/pc*/
+/*pc*/
 
 /* CoachList */
 
@@ -120,8 +103,5 @@ footer ul {
 
         padding: 20%;
     }
-    #maCarte{
-        display:block
-
-}
+    
 }
