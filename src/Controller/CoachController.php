@@ -184,6 +184,7 @@ class CoachController extends AbstractController
         if(!empty($_POST)){
             if(isset($_POST['confirm']) && $_POST['confirm'] === 'yes'){
 
+                $this->container->get('security.token_storage')->setToken(null);
                 $em->remove($coach);
                 $em->flush();
 

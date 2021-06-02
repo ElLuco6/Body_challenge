@@ -56,8 +56,8 @@
 
     <button type="submit"
         class="btn btn-outline-light text-white bg-dark m-auto rounded-pill bg-light text-dark mt-5">S'enregistrer</button>
-    <button type="submit"
-        class="btn btn-outline-light text-white bg-danger m-auto rounded-pill text-dark mt-5">Supprimer le profil</a>
+    
+    <a href="{{ path('delete_coach', {id: update.id})}}" class="btn btn-outline-light text-white bg-danger m-auto rounded-pill text-dark mt-5">Supprimer le profil</a>
         {{ form_end(form) }}
 </section>
 {% endblock %}
