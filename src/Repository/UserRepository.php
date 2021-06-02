@@ -41,7 +41,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     */
     public function findRandomCoach(int $limit = 6)
     {   
-        //Lister de manieres aléatoire 5 coaches sur la page d'acceuil avec la function RAND() avec une requête SQL classique
+        //Lister de manieres aléatoire 6 coaches sur la page d'acceuil avec la function RAND() avec une requête SQL classique
         // On se connecte
         $sth = $this->getEntityManager()->getConnection();
         // On fait notre requête
